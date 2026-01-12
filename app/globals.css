@@ -1,26 +1,416 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@import './animations.css';
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html, body {
+  max-width: 100vw;
+  /* overflow-y: hidden; */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #f8fafc;
+  font-family: system-ui, -apple-system, sans-serif;
 }
+
+
+.Toastify__toast {
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+.Toastify__toast--success {
+  background: #2ecc71;
+}
+
+.Toastify__toast--error {
+  background: #e74c3c;
+}
+
+.Toastify__progress-bar {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* --------------- */
+
+/* app/globals.css */
+.mobile-cta-button {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 999;
+  padding: 1rem 1.5rem;
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 100vmax;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(220, 38, 38, 0.4);
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 1024px) {
+  .mobile-cta-button {
+    display: flex;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 8px 30px rgba(220, 38, 38, 0.4);
+  }
+  50% {
+    box-shadow: 0 8px 40px rgba(220, 38, 38, 0.6);
+  }
+}
+
+/* PARIS (75) — Tous les arrondissements
+
+
+
+Paris 1
+
+Paris 2
+
+Paris 3
+
+Paris 4
+
+Paris 5
+
+Paris 6
+
+Paris 7
+
+Paris 8
+
+Paris 9
+
+Paris 10
+
+Paris 11
+
+Paris 12
+
+Paris 13
+
+Paris 14
+
+Paris 15
+
+Paris 16
+
+Paris 17
+
+Paris 18
+
+Paris 19
+
+Paris 20
+HAUTS-DE-SEINE (92)
+
+• Boulogne-Billancourt
+
+• Nanterre
+
+• Courbevoie
+
+• Colombes
+
+• Asnières-sur-Seine
+
+• Levallois-Perret
+
+• Neuilly-sur-Seine
+
+• Issy-les-Moulineaux
+
+• Rueil-Malmaison
+
+• Meudon
+
+• Clamart
+
+• Montrouge
+
+• Puteaux
+
+• Suresnes
+
+• Gennevilliers
+
+• Clichy
+
+• Châtenay-Malabry
+
+• Villeneuve-la-Garenne
+
+• Malakoff
+VAL-DE-MARNE (94)
+
+• Créteil
+
+• Vitry-sur-Seine
+
+• Ivry-sur-Seine
+
+• Saint-Maur-des-Fossés
+
+• Champigny-sur-Marne
+
+• Maisons-Alfort
+
+• Alfortville
+
+• Villejuif
+
+• Charenton-le-Pont
+
+• Le Kremlin-Bicêtre
+
+• Orly
+
+• Thiais
+
+• Choisy-le-Roi
+
+• Nogent-sur-Marne
+
+• Fontenay-sous-Bois
+
+• Vincennes
+
+• Sucy-en-Brie
+
+• Limeil-Brévannes
+ESSONNE (91)
+
+• Évry-Courcouronnes
+
+• Massy
+
+• Savigny-sur-Orge
+
+• Sainte-Geneviève-des-Bois
+
+• Corbeil-Essonnes
+
+• Palaiseau
+
+• Athis-Mons
+
+• Viry-Châtillon
+
+• Les Ulis
+
+• Draveil
+
+• Ris-Orangis
+
+• Brunoy
+
+• Grigny
+
+• Gif-sur-Yvette
+
+• Yerres
+SEINE-ET-MARNE (77)
+
+• Meaux
+
+• Chelles
+
+• Melun
+
+• Pontault-Combault
+
+• Savigny-le-Temple
+
+• Champs-sur-Marne
+
+• Villeparisis
+
+• Torcy
+
+• Lagny-sur-Marne
+
+• Bussy-Saint-Georges
+
+• Fontainebleau
+
+• Coulommiers
+
+• Mitry-Mory
+
+• Sénart
+YVELINES (78)
+
+• Versailles
+
+• Saint-Germain-en-Laye
+
+• Mantes-la-Jolie
+
+• Poissy
+
+• Sartrouville
+
+• Conflans-Sainte-Honorine
+
+• Houilles
+
+• Trappes
+
+• Montigny-le-Bretonneux
+
+• Rambouillet
+
+• Le Chesnay-Rocquencourt
+
+• Élancourt
+
+• Les Mureaux
+VAL-D’OISE (95)
+
+• Argenteuil
+
+• Sarcelles
+
+• Cergy
+
+• Garges-lès-Gonesse
+
+• Franconville
+
+• Ermont
+
+• Pontoise
+
+• Taverny
+
+• Saint-Gratien
+
+• Sannois
+
+• Gonesse
+
+• Bezons
+
+• Villiers-le-Bel
+
+• Enghien-les-Bains
+🌴 3. PACA – LISTE PROPRE (06–13–83–84)
+ALPES-MARITIMES (06)
+
+• Nice
+
+• Cannes
+
+• Antibes
+
+• Grasse
+
+• Cagnes-sur-Mer
+
+• Menton
+
+• Le Cannet
+
+• Saint-Laurent-du-Var
+
+• Mougins
+
+• Vallauris
+
+• Villeneuve-Loubet
+
+BOUCHES-DU-RHÔNE (13)
+
+• Marseille (1 à 16)
+
+• Aix-en-Provence
+
+• Aubagne
+
+• Martigues
+
+• Salon-de-Provence
+
+• Vitrolles
+
+• Marignane
+
+• Istres
+
+• La Ciotat
+
+• Miramas
+
+• Allauch
+
+• Les Pennes-Mirabeau
+
+VAR (83)
+
+• Toulon
+
+• Hyères
+
+• La Seyne-sur-Mer
+
+• Fréjus
+
+• Saint-Raphaël
+
+• Six-Fours-les-Plages
+
+• Brignoles
+
+• Draguignan
+
+• La Garde
+
+• La Valette-du-Var
+
+VAUCLUSE (84)
+
+• Avignon
+
+• Orange
+
+• Carpentras
+
+• Cavaillon
+
+• Le Pontet
+
+• Sorgues
+
+• L’Isle-sur-la-Sorgue
+
+• Apt
+
+• Bollène
+
+• Pertuis
+
+• Monteux
+
+• Vedène
+
+• Morières-lès-Avignon
+
+• Le Thor
+
+• Sarrians
+
+• Châteaurenard */
