@@ -21,6 +21,8 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [recaptchaToken, setRecaptchaToken] = useState<string>('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -260,11 +262,17 @@ export default function ContactForm() {
           </div>
 
           <div className={styles.recaptcha}>
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
-              onChange={onRecaptchaChange}
-            />
+            {siteKey ? (
+              <ReCAPTCHA
+                ref={recaptchaRef}
+                sitekey={siteKey}
+                onChange={onRecaptchaChange}
+              />
+            ) : (
+              <p style={{ color: 'red', fontSize: '14px' }}>
+                reCAPTCHA non configuré
+              </p>
+            )}
             {!recaptchaToken && (
               <div className={styles.recaptchaHint}>Veuillez vérifier que vous n'êtes pas un robot</div>
             )}
