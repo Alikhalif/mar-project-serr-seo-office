@@ -26,7 +26,7 @@ export default function Home() {
         subtitle: "Dépannez-vous en moins de 30 minutes avec nos experts serruriers agréés, disponibles 24h/24 et 7j/7 pour toutes vos urgences.",
         backgroundImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
         ctaText: "URGENCE SERRURERIE - APPEL IMMÉDIAT",
-        ctaPhone: "01 23 45 67 89"
+        ctaPhone: "07 57 83 18 00"
     };
 
     const handleCtaClick = () => {

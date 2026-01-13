@@ -54,7 +54,7 @@ export default async function CityPage({ params }: PageProps) {
             <span className={styles.ctaIcon}>📞</span>
             <span className={styles.ctaText}>
               <span className={styles.ctaLabel}>Appelez-nous</span>
-              <span className={styles.ctaPhone}>01 23 45 67 89</span>
+              <span className={styles.ctaPhone}>07 57 83 18 00</span>
             </span>
           </button>
         </div>

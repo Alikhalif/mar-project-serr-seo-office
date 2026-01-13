@@ -48,7 +48,7 @@ export default function ContactPage() {
                 <span>📞</span>
               </div>
               <h3 className={styles.infoTitle}>Par téléphone</h3>
-              <p className={styles.infoText}>01 23 45 67 89</p>
+              <p className={styles.infoText}>07 57 83 18 00</p>
             </div>
             <div className={styles.infoCard}>
               <div className={styles.infoIcon}>
